@@ -1,0 +1,126 @@
+$font-family-base: 'NotoSansCJKjp', sans-serif;
+$font-family-second: 'Manrope', sans-serif;
+$font-family-cormorant: 'Cormorant', sans-serif;
+$size-main: 16;
+$height-header: 96px;
+$space-default: 30;
+
+//Colors
+$color-white: #fff;
+$color-black: #000;
+$color-dark: #323230;
+$color-blue: #357db8;
+$color-blue-light: #e7eff1;
+$color-gray-light: #f1f1ee;
+$color-red: red;
+$color-body: $color-black;
+$color-primary: $color-black;
+$color-second: $color-dark;
+$colors: (
+  'primary': $color-primary,
+  'second': $color-second,
+  'white': $color-white,
+  'black': $color-black,
+  'blue': $color-blue,
+  'blue-light': $color-blue-light,
+  'red': $color-red,
+  'body': $color-body,
+  'gray-light': $color-gray-light,
+  'dark': $color-dark,
+);
+
+//Font size
+$font-size-base: 15;
+$font-size-xxl: $font-size-base * 2;
+$font-size-xl: 26;
+$font-size-lg: $size-main * 1.5;
+$font-size-md: $size-main * 1.25;
+$font-size-sm: 13;
+$font-size-xs: $size-main * 0.75;
+$font-size-xxs: $size-main * 0.625;
+$font-sizes: (
+  8: 74,
+  7: $font-size-xxl,
+  6: $font-size-xl,
+  5: $font-size-lg,
+  4: $font-size-md,
+  3: $font-size-sm,
+  2: $font-size-xs,
+  1: $font-size-xxs,
+  base: $font-size-base,
+);
+
+//Font weight
+$font-weight-black: 900;
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weights: (
+  'black': $font-weight-black,
+  'bold': $font-weight-bold,
+  'semibold': $font-weight-semibold,
+  'medium': $font-weight-medium,
+  'regular': $font-weight-regular,
+  'light': $font-weight-light,
+);
+
+//Breakpoints
+$breakpoints: (
+  0: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+//Container
+$container-width-desktop: 1080px;
+$container-width-tablet: 960px;
+$container-width-sp: 650px;
+
+$container-spacing-desktop: 50px;
+$container-spacing-tablet: 35px;
+$container-spacing-sp: 25px;
+
+//Common
+$displays: flex, block, inline, inline-block, inline-flex, none;
+$flex-align: stretch, center, start, end;
+$flex-justify: start, end, center, space-between, space-around;
+$positions: relative, absolute, fixed, static;
+
+//Spacing
+$spacing-1: $size-main * 0.5;
+$spacing-2: $size-main * 0.75;
+$spacing-3: $size-main;
+$spacing-4: $size-main * 1.25;
+$spacing-5: $size-main * 1.5;
+$spacings: (
+  0: 0,
+  1: $spacing-1,
+  2: $spacing-2,
+  3: $spacing-3,
+  4: $spacing-4,
+  5: $spacing-5,
+);
+$spacing-padding: (
+  '': 'padding',
+  'l': 'padding-left',
+  'r': 'padding-right',
+  't': 'padding-top',
+  'b': 'padding-bottom',
+);
+$spacing-margin: (
+  '': 'margin',
+  'l': 'margin-left',
+  'r': 'margin-right',
+  't': 'margin-top',
+  'b': 'margin-bottom',
+);
+
+//Flex values
+$values: auto, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12;
+$unit: math.div(100%, 12);
+

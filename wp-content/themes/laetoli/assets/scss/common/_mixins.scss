@@ -1,0 +1,143 @@
+//Base Class
+@mixin colors {
+  @each $color, $value in $colors {
+    .color-#{$color} {
+      color: #{$value};
+    }
+  }
+}
+@mixin backgroundColors {
+  @each $color, $value in $colors {
+    .bg-#{$color} {
+      background-color: #{$value};
+    }
+  }
+}
+@mixin generate-root {
+  :root {
+    @each $color, $value in $colors {
+      --color-#{$color}: #{$value};
+    }
+    @each $font-size, $value in $font-sizes {
+      --fs-#{$font-size}: #{$value}px;
+    }
+  }
+}
+
+
+//Reposive
+@mixin media-min($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin media-max($breakpoint) {
+  @media (max-width: #{$breakpoint - 1px}) {
+    @content;
+  }
+}
+@mixin media-between($from, $to) {
+  @media (min-width: $from) and (max-width: #{$to - 1px}){
+    @content;
+  }
+}
+@mixin media-desktop {
+  @include media-min(breakpoint(xl)) {
+    @content;
+  }
+}
+@mixin media-tablet {
+  @include media-min(breakpoint(md)) {
+    @content;
+  }
+}
+@mixin media-mobile {
+  @include media-max(breakpoint(md)) {
+    @content;
+  }
+}
+@mixin create-media-query($breakpoint) {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @include media-min($breakpoint) {
+      @content;
+    }
+  }
+}
+
+//Button
+//color, background, borderColor, fontSize
+@mixin button-custom($color, $background, $border-color, $font-size) {
+  @if $color {
+    color: $color;
+  }
+  @if $font-size {
+    font-size: #{$font-size}px;
+  }
+  @if $background {
+    background: $background;
+  }
+  @if $border-color {
+    border-color: $border-color;
+  }
+}
+
+//Common
+@mixin display-class {
+  @each $val, $bp in $breakpoints {
+    @include create-media-query($bp) {
+      @each $var in $displays {
+        @if ($bp == 0) {
+          .d-#{$var} {
+            display: $var !important;
+          }
+        } @else {
+          .#{$val}\:d-#{$var} {
+            display: $var !important;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin position-class {
+  @each $var in $positions {
+    .position-#{$var} {
+      position: $var;
+    }
+  }
+}
+
+
+//Generate font
+@mixin letter-spacing ($font-size, $space) {
+  letter-spacing: #{math.div($font-size * $space, 1000)}px;
+}
+
+@mixin fonts($font-size, $line-height, $space: $space-default) {
+  font-size: #{$font-size}px;
+  @if ($line-height != null) {
+    line-height: $line-height;
+  }
+  @if ($space != normal) {
+    @include letter-spacing($font-size, $space);
+  }
+  @else {
+    letter-spacing: $space;
+  }
+}
+
+//Font face
+@mixin font-face($font-name, $path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    src: url($path + '.eot');
+    src: url($path + '.eot?#iefix') format('embedded-opentype'),
+      url($path + '.woff') format('woff'),
+      url($path + '.ttf') format('truetype'),
+      url($path + '.svg##{$font-name}') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}

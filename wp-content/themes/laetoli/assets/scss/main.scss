@@ -1,0 +1,8 @@
+@use 'sass:math';
+@import 'common/variables.scss';
+@import 'common/functions.scss'; 
+@import 'common/mixins.scss';
+
+@import 'parts/header.scss';
+@import 'parts/footer.scss';
+@import 'parts/main.scss'; 

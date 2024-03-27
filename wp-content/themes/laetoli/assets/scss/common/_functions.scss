@@ -1,0 +1,11 @@
+@function percentage($number) {
+  @return math.percentage(math.div(nth($number, 1), nth($number, 2)));
+}
+
+@function breakpoint($breakpoint) {
+  @return map-get($breakpoints, $breakpoint);
+}
+
+@function container-width($width, $spacing) {
+  @return $width + $spacing * 2;
+}

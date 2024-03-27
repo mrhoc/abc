@@ -1,0 +1,234 @@
+@include colors();
+@include backgroundColors();
+@include position-class();
+
+//Display
+@include display-class();
+
+//Sizing
+.w-100 {
+  width: 100vw;
+}
+.h-100 {
+  width: 100hw;
+}
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+
+//Alignment
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+//Button
+%button-style {
+  line-height: 1;
+  border: 1px solid;
+  padding: 9px 25px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 290px;
+  font-size: $font-size-sm * 1px;
+  position: relative;
+  font-family: $font-family-second;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  @extend %button-style;
+  @include button-custom(
+    $color-primary,
+    transparent,
+    rgba(#000, 0.2),
+    null
+  );
+  &--primary {
+    @include button-custom($color-white, $color-primary, $color-primary, null);
+  }
+  &--second {
+    @include button-custom($color-white, $color-second, $color-second, null);
+  }
+  &--gray {
+    @include button-custom($color-primary, $color-gray-light, $color-gray-light, null);
+  }
+  &--rounded {
+    border-radius: 5em;
+  }
+  &--link {
+    padding-right: 10px;
+    padding-bottom: 26px;
+    position: relative;
+    color: $color-body;
+    font-weight: bold;
+    font-size: 32px;
+    @include letter-spacing (32, -20);
+    line-height: 1;
+    font-family: $font-family-second;
+    display: inline-block;
+    @include media-tablet {
+      font-size: 74px;
+      @include letter-spacing (74, -20);
+      padding-right: 22px;
+      padding-bottom: 56px;
+    }
+    &::after {
+      content: '';
+      background: url(../images/icons/icon-angle-right.svg) no-repeat center right;
+      background-size: contain;
+      height: 16px;
+      width: 50%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      @include media-tablet {
+        width: 55%;
+      }
+    }
+  }
+  &__icon {
+    margin-left: 10px;
+    height: 4px;
+    @include media-tablet {
+      margin-left: 20px;
+      height: 5px;
+    }
+  }
+}
+
+//Cotainer
+.container {
+  max-width: container-width($container-width-sp, $container-spacing-sp);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-spacing-sp;
+  padding-right: $container-spacing-sp;
+  @include media-tablet {
+    max-width: container-width($container-width-tablet, $container-spacing-tablet);
+    padding-left: $container-spacing-tablet;
+    padding-right: $container-spacing-tablet;
+  }
+  @include media-desktop {
+    max-width: container-width($container-width-desktop, $container-spacing-desktop);
+    padding-left: $container-spacing-desktop;
+    padding-right: $container-spacing-desktop;
+  }
+}
+
+.container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  position: relative;
+  z-index: 2;
+  // @include media-tablet {
+  //   padding-left: $container-spacing-tablet;
+  //   padding-right: $container-spacing-tablet;
+  // }
+  // @include media-desktop {
+  //   padding-left: $container-spacing-desktop;
+  //   padding-right: $container-spacing-desktop;
+  // }
+}
+
+
+//List ul,li
+.list-style-none {
+  list-style: none;
+  padding-left: 0;
+}
+
+//Text style
+.text-nowrap {
+  white-space: nowrap;
+}
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-underline {
+  text-decoration: underline;
+}
+.text-decoration-none {
+  text-decoration: none;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.section {
+  &__title-rotate {
+    @include letter-spacing (18, -20);
+    font-size: 18px;
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: left top;
+    position: absolute;
+    left: 3vw;
+    top: 28px;
+    @include media-tablet {
+      left: 3.5vw;
+      top: 86px;
+      @include letter-spacing (26, -20)
+    }
+  }
+  &__logo-rotate {
+    position: absolute;
+    top: 50%;
+    transform: rotate(90deg) translate(-60%, -50%);
+    transform-origin: left;
+    height: 18.5vw;
+    left: -0.2vw;
+    @include media-tablet {
+      height: 11.5vw;
+      left: -8px;
+    }
+  }
+}
+
+
+.aos-init {
+  .btn--link {
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      height: 16px;
+      bottom: 0;
+      width: 50%;
+      z-index: 1;
+      @include media-tablet {
+        width: 55%;
+      }
+    }
+  }
+}
+.aos-animate {
+  .btn--link {
+    &::before {
+      width: 0%;
+      transition: width 0.5s ease 0.2s;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@mixin spacing-padding {
+  @each $val, $bp in $breakpoints {
+    @include create-media-query($bp) {
+      @each $prefix, $value in $spacing-padding {
+        @each $key, $spacing in $spacings {
+          @if ($bp == 0) {
+            .p#{$prefix}-#{$key} {
+              #{$value}: $spacing * 1px !important;
+            }
+          } @else {
+            .#{$val}\:p#{$prefix}-#{$key} {
+              #{$value}: $spacing * 1px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@mixin spacing-margin {
+  @each $val, $bp in $breakpoints {
+    @include create-media-query($bp) {
+      @each $prefix, $value in $spacing-margin {
+        @each $key, $spacing in $spacings {
+          @if ($bp == 0) {
+            .m#{$prefix}-#{$key} {
+              #{$value}: $spacing * 1px !important;
+            }
+          } @else {
+            .#{$val}\:m#{$prefix}-#{$key} {
+              #{$value}: $spacing * 1px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@mixin spacing-auto-margin {
+  @each $val, $bp in $breakpoints {
+    @include create-media-query($bp) {
+      @each $prefix, $value in $spacing-margin {
+        @if ($bp == 0) {
+          .m#{$prefix}-auto {
+            #{$value}: auto !important;
+          }
+        } @else {
+          .#{$val}\:m#{$prefix}-auto {
+            #{$value}: auto !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include spacing-padding();
+@include spacing-margin();
+@include spacing-auto-margin();

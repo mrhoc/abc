@@ -1,0 +1,39 @@
+@include font-face('NotoSansCJKjp', '../fonts/NotoSansCJKjp/NotoSansCJKjp-Medium-Alphabetic', 500);
+@include font-face('NotoSansCJKjp', '../fonts/NotoSansCJKjp/NotoSansCJKjp-Regular-Alphabetic');
+
+@mixin font-sizes {
+  @each $val, $bp in $breakpoints {
+    @include create-media-query($bp) {
+      @each $fs, $value in $font-sizes {
+        @if ($bp == 0) {
+          .fs-#{$fs} {
+            font-size: #{$value}px !important;
+          }
+        } @else {
+          .#{$val}\:fs-#{$fs} {
+            font-size: #{$value}px !important;
+          }
+        }
+      }
+    }
+  }
+}
+@include font-sizes();
+
+//Font weight
+@mixin font-weights {
+  @each $fw, $value in $font-weights {
+    .fw-#{$fw} {
+      font-weight: #{$value};
+    }
+  }
+}
+@include font-weights();
+
+//Font family
+.ff-second {
+  font-family: $font-family-second;
+}
+.ff-cormorant {
+  font-family: $font-family-cormorant;
+}

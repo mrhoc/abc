@@ -1,0 +1,100 @@
+/*
+Default style for WP-PageNavi plugin
+
+http://wordpress.org/extend/plugins/wp-pagenavi/
+*/
+
+.wp-pagenavi {
+  color: var(--color-second);
+  font-family: 'Manrope', sans-serif;
+  font-weight: bold;
+	clear: both;
+	text-align: center;
+	padding-top: 65px;
+	padding-right: 10vw;
+}
+
+@media (min-width:768px) {
+	.wp-pagenavi {
+		clear: both;
+		text-align: center;
+    padding-top: 94px;
+		padding-right: 10vw;
+	}
+}
+.wp-pagenavi>a[rel="prev"], .wp-pagenavi>a[rel="next"] {
+  color: transparent;
+  background-position: center 52%;
+  background-repeat: no-repeat;
+  background-size: 7px;
+}
+@media (min-width:768px) {
+  .wp-pagenavi>a[rel="prev"], .wp-pagenavi>a[rel="next"] {
+    background-size: 9px;
+  }
+}
+.wp-pagenavi>a[rel="prev"] {
+  background-image: url(../images/icons/icon-arrow-left.svg);
+}
+@media (min-width:768px) {
+  .wp-pagenavi>a[rel="prev"] {
+    margin-right: 12px;
+  }
+}
+.wp-pagenavi>a[rel="next"] {
+  background-image: url(../images/icons/icon-arrow-right.svg);
+}
+@media (min-width:768px) {
+  .wp-pagenavi>a[rel="next"] {
+    margin-left: 12px;
+  }
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+	font-size: 18px;
+	padding: 12px;
+}
+
+@media (min-width:768px) {
+	.wp-pagenavi a,
+	.wp-pagenavi span {
+		text-decoration: none;
+		padding: 22px 18px;
+		font-size: 23px;
+	}
+}
+
+/* .wp-pagenavi a:hover, .wp-pagenavi span.current {
+} */
+
+a.page.larger {
+	color: white
+}
+
+a.page.smaller {
+	color: white
+}
+
+@media (max-width:767px) {
+	.previouspostslink {
+		padding-right: 25px !important;
+	}
+}
+
+@media (max-width:767px) {
+	.nextpostslink {
+		padding-left: 25px !important;
+	}
+}
+
+.wp-pagenavi .current+a[rel="next"] {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.wp-pagenavi a[rel="prev"].disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}

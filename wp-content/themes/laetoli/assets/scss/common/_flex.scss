@@ -1,0 +1,86 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+  > * {
+    padding: 0 10px;
+  }
+  &--large {
+    margin: 0 -20px;
+    > * {
+      padding: 0 20px;
+    }
+  }
+  &--no-spacing {
+    margin: 0;
+    > * {
+      padding: 0;
+    }
+  }
+}
+
+@mixin generate-cols {
+  @each $val, $bp in $breakpoints {
+    @include create-media-query($bp) {
+      @each $value in $values {
+        @if($value == auto){
+          @if ($bp == 0) {
+            .col {
+              flex: 1 0 0%;
+              width: 100%;
+              max-width: 100%;
+            }
+          } @else {
+            .#{$val}\:col {
+              flex: 1 0 0%;
+              width: 100%;
+              max-width: 100%;
+            }
+          }
+        }
+        @else {
+          @if ($bp == 0) {
+            .col-#{$value} {
+              flex: 0 0 $unit * $value;
+              max-width: $unit * $value;
+            }
+          } @else {
+            .#{$val}\:col-#{$value} {
+              flex: 0 0 $unit * $value;
+              max-width: $unit * $value;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include generate-cols();
+
+//Flex
+
+@mixin flex-align {
+  @each $var in $flex-align {
+    .align-items-#{$var} {
+      align-items: $var;
+    }
+  }
+}
+@include flex-align();
+
+@mixin flex-justify {
+  @each $var in $flex-justify {
+    .justify-content-#{$var} {
+      justify-content: $var;
+    }
+  }
+}
+@include flex-justify();
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}

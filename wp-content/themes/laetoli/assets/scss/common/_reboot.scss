@@ -1,0 +1,62 @@
+@include generate-root();
+
+body {
+  font-family: $font-family-base;
+  font-size: #{$font-size-sm}px;
+  line-height: normal;
+  color: $color-body;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: $color-white;
+  @include media-tablet {
+    font-size: #{$font-size-base}px;
+  }
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+a {
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.15s ease-out;
+  &:hover {
+    opacity: .7;
+  }
+  // &:focus, &:visited, &:focus-within {
+  //   background-color: inherit;
+  // }
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+img, video {
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+}
+
